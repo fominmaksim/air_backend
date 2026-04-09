@@ -6,15 +6,20 @@ export const initWebSocket = server => {
   const wss = new WebSocketServer({ server, path: '/ws' });
 
   wss.on('connection', (ws, req) => {
-    console.log('Client connected, req:', req);
+    console.log('WS client connected:', req.socket.remoteAddress);
     clients.push(ws);
 
-    wss.on('message', msg => {
+    ws.on('message', msg => {
       console.log('📩 from client:', msg.toString());
     });
 
     ws.on('close', () => {
       clients = clients.filter(c => c !== ws);
+      console.log('WS client disconnected');
+    });
+
+    ws.on('error', err => {
+      console.log('WS client error:', err.message);
     });
   });
 };
