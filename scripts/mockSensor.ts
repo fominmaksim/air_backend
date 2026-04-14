@@ -9,7 +9,7 @@ type SensorPayload = {
 
 export {};
 
-const POINTS_COUNT = Number(process.env.SENSOR_POINTS_COUNT) || 100;
+const POINTS_COUNT = Number(process.env.SENSOR_POINTS_COUNT) || 100000;
 
 const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
 const round = (value: number, digits: number) => Number(value.toFixed(digits));
