@@ -13,6 +13,10 @@ export default [
     files: ['**/*.ts'],
     languageOptions: {
       parser: tsParser,
+      parserOptions: {
+        project: ['./tsconfig.eslint.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
@@ -26,12 +30,15 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...tsPlugin.configs.recommended.rules,
-      'prettier/prettier': 'warn',
+      'prettier/prettier': 'error',
       'no-console': 'off',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
       'no-var': 'error',
-      'prefer-const': 'warn',
+      'prefer-const': 'error',
       eqeqeq: ['error', 'always'],
     },
   },

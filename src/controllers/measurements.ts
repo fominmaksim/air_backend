@@ -2,7 +2,7 @@ import { pool } from '../db/db.js';
 
 export const getMeasurements = async (req, res, next) => {
   try {
-    const { deviceId, interval } = req.query;
+    const { deviceId } = req.query;
 
     // const parsedInterval = interval || '6 hours';
     const parsedDeviceId = deviceId || 2;

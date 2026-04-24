@@ -45,7 +45,7 @@ const port = process.env.PORT || '3000';
 const API_URL = process.env.SENSOR_API_URL ?? `http://${host}:${port}/api/sensor`;
 const DELAY_MS = 10_000;
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const sendMockData = async () => {
   for (const [index, payload] of sensorData.entries()) {
