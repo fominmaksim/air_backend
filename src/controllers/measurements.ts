@@ -14,7 +14,10 @@ export const getMeasurements = async (req, res, next) => {
     AVG(temperature) as temp,
     AVG(humidity) as humidity,
     AVG(pressure) as pressure,
-    AVG(gas) as gas
+    AVG(gas) as gas,
+    AVG(static_iaq) AS "staticIaq",
+    AVG(voc) AS "VOC",
+    AVG(eco2) AS "eCO2"
   FROM measurements
   WHERE device_id = $1
     AND time >= NOW() - INTERVAL '12 hours'

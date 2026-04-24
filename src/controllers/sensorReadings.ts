@@ -23,7 +23,7 @@ export const postSensorReadings = async (
 
     await pool.query(
       `INSERT INTO measurements 
-     (time, device_id, room_id, temperature, humidity, pressure, gas, iaq, confidence, static_iaq, voc, e_co2)
+     (time, device_id, room_id, temperature, humidity, pressure, gas, iaq, iaq_confidence, static_iaq, voc, eco2)
      VALUES (NOW(), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
       [deviceId, roomId, temp, humidity, pressure, gas, iaq, confidence, staticIaq, VOC, eCO2]
     );
